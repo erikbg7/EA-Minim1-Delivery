@@ -119,7 +119,7 @@ SOFTWARE.
 
 ## Author Info
 
-Sara Stephannie
+Sara Padilla
 
 Erik Blanca
 
