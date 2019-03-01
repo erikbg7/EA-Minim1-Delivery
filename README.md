@@ -15,7 +15,7 @@ This is an API-REST using node.js mongoose, express and angular
 
 ## Description
 
-For the angular we will use a command line interface for angular, that helps us to manage our project.
+The Stack MEAN, aims to create modern web applications with Javascript as the main language both Frontend and in the Backend and the Database.  In this course we will create a CRUD application that is a Single Page Applications or Applications of a single page using Angular in its version 6. and this will be hosted on a Nodejs server that will use Express as server side framework and Mongodb as Database.
 
 #### Technologies
 
@@ -71,7 +71,6 @@ ng g component <name>
 Generate other angular stuff:
 
 ```
-ng g class <name>
 ng g class <name>
 ng g directive <name>
 ng g service <name>
