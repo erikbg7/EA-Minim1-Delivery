@@ -49,12 +49,16 @@ Run node project:
 ```
 nodemon index.js
 ```
+>(1) Keep it running on a separate cmd while you are working on your project in order to see the changes   
 
 Install angular:
 
 ```
 npm install -g @angular/cli
+npm install --save-dev @angular-devkit/build-angular
 ```
+
+>The second command is used in order to avoid future errors
 
 Create new project:
 
@@ -81,6 +85,7 @@ Run the project on local server:
 ```
 ng serve --open
 ```
+>(2) Keep it running on a separate cmd while you are working on your project in order to see the changes   
 
 Create a build and change environment:
 
