@@ -1,15 +1,24 @@
 <h2>Login</h2>
-<form #loginForm="ngForm">
+<form [formGroup]="form" (ngSubmit)="login()">
   <div class="form-group">
-    <label >Email</label>
-    <input type="email" class="form-control" name="email" [(ngModel)]="userService.selectedUser.email"/>
+    <label >DisplayName</label>
+    <input type="text" class="form-control" formControlName="displayName"/>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.displayName">
+        <div class="error-message" *ngIf="form.get('displayName').hasError(validation.type) && (form.get('displayName').dirty || form.get('displayName').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input type="password" class="form-control" name="password" [(ngModel)]="userService.selectedUser.password"/>
+    <input type="password" class="form-control" name="password"/>
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" (click)="login(loginForm)">Login</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Login</button>
     <button class="btn btn-primary" style="margin-left: 30px" [routerLink]="['/signup']">Register</button>
   </div>
 </form>

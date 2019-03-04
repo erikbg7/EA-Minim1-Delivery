@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, NgForm } from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, NgForm, Validator, Validators} from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import {Router} from "@angular/router";
@@ -14,17 +14,35 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
+  validation_messages: any;
+
   constructor(private userService: UserService,
-              private router: Router) {
+              private router: Router, private formBuilder: FormBuilder) {
+
+    this.form = this.formBuilder.group({
+        displayName: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(25)]))
+    })
 
   }
 
   ngOnInit() {
+    this.validation_messages = {
+      'displayName': [
+        { type: 'minLength', message: 'Nombre minim de caracters es 4'},
+        { type: 'maxLength', message: 'Nombre maxim de caracters es 25'},
+        { type: 'required', message: 'Nombre es requerit'}
+      ]
+    }
   }
 
-  login(loginForm: NgForm) {
-    console.log(loginForm.value);
-    this.userService.signin(loginForm.value)
+  login() {
+    console.log(this.form.value);
+    this.form.get("displayName").setErrors({required: true});
+
+    this.userService.signin(this.form.value.displayName)
       .subscribe(
         res => {
           console.log(res);
