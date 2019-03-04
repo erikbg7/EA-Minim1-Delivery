@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, NgForm, Validator, Validators} from
 import { UserService } from "../../services/user.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import {Router} from "@angular/router";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-login',
@@ -12,37 +13,42 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
+  loginForm: FormGroup;
 
   validation_messages: any;
 
   constructor(private userService: UserService,
               private router: Router, private formBuilder: FormBuilder) {
 
-    this.form = this.formBuilder.group({
-        displayName: new FormControl('', Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(25)]))
+    this.loginForm = this.formBuilder.group({
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
+
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^(?=.*\d).{4,8}$/)]))
     })
 
   }
 
   ngOnInit() {
     this.validation_messages = {
-      'displayName': [
-        { type: 'minLength', message: 'Nombre minim de caracters es 4'},
-        { type: 'maxLength', message: 'Nombre maxim de caracters es 25'},
-        { type: 'required', message: 'Nombre es requerit'}
+      'email': [
+        { type: 'required', message: 'Email is required' },
+        { type: 'pattern', message: 'Email must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
+      ],
+      'password': [
+        { type: 'required', message: 'Password is required' },
+        { type: 'pattern', message: 'Password must be valid. Must contain at least one number and must be between 4 and 8 characters' }
       ]
     }
   }
 
   login() {
-    console.log(this.form.value);
-    this.form.get("displayName").setErrors({required: true});
-
-    this.userService.signin(this.form.value.displayName)
+    console.log(this.loginForm.value);
+    let user = new User(this.loginForm.value.email, this.loginForm.value.password);
+    this.userService.signin(user)
       .subscribe(
         res => {
           console.log(res);
@@ -54,7 +60,6 @@ export class LoginComponent implements OnInit {
           console.log(err);
           this.handleError(err);
         });
-    // action ..
   }
 
   private handleError(err: HttpErrorResponse) {

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { HttpErrorResponse } from "@angular/common/http";
-import { NgForm } from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {Validator} from "validator.ts/Validator";
 
 @Component({
   selector: 'app-register',
@@ -11,12 +13,50 @@ import { NgForm } from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
 
+  form: FormGroup;
+
   confirmEmail: string;
 
-  constructor(private userService: UserService) {
+  validation_messages: any;
+
+  validator: Validator;
+
+  isEmail: boolean;
+
+  constructor(private userService: UserService,
+              private router: Router, private formBuilder: FormBuilder) {
+
+    this.form = this.formBuilder.group({
+      displayName: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(25)])),
+
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$")])),
+
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern("^(?=.*\d).{4,8}$")]))
+    })
+
   }
 
   ngOnInit() {
+    this.validation_messages = {
+      'displayName': [
+        { type: 'minLength', message: 'Nombre minim de caracters es 4'},
+        { type: 'maxLength', message: 'Nombre maxim de caracters es 25'},
+        { type: 'required', message: 'Nombre es requerit'}
+      ],
+      'email': [
+        { type: 'required', message: 'E-mail es requerit'}
+      ],
+      'password': [
+        { type: 'required', message: 'Password es requerit'}
+      ]
+    }
   }
 
   register(registerForm: NgForm) {

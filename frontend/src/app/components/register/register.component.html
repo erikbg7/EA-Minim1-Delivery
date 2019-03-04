@@ -1,5 +1,5 @@
 <h2>Register</h2>
-<form #registerForm="ngForm">
+<form [formGroup]="form">
     <div class="form-group">
         <label for="displayNameInput">Display Name</label>
         <input type="text" class="form-control" id="displayNameInput" name="displayName" #displayName="ngModel" [(ngModel)]="userService.selectedUser.displayName" required pattern="^.{4,8}$"/>
@@ -9,14 +9,6 @@
         </div>
     </div>
     <div class="form-group">
-      <label for="passwordInput">Password</label>
-      <input type="password" class="form-control" id="passwordInput" name="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" required pattern="^(?=.*\d).{4,8}$"/>
-      <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
-        <div *ngIf="password.errors?.required">Password is required</div>
-        <div *ngIf="password.errors?.pattern">Password is invalid. Must have between 4 and 8 characters long and include at least on number</div>
-      </div>
-    </div>
-    <div class="form-group">
       <label for="emailInput">Email</label>
       <input type="email" class="form-control" id="emailInput" name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"/>
       <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
@@ -24,6 +16,14 @@
         <div *ngIf="email.errors?.pattern">Email is invalid. The domain name can't has numbers and must has between 2 and 3 characters and only one dot</div>
       </div>
     </div>
+  <div class="form-group">
+    <label for="passwordInput">Password</label>
+    <input type="password" class="form-control" id="passwordInput" name="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" required pattern="^(?=.*\d).{4,8}$"/>
+    <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors?.required">Password is required</div>
+      <div *ngIf="password.errors?.pattern">Password is invalid. Must have between 4 and 8 characters long and include at least on number</div>
+    </div>
+  </div>
     <div class="form-group">
       <label for="confirmEmailInput">Confirm Email</label>
       <input type="email" class="form-control" id="confirmEmailInput"  name="confirmEmail" #emailConfirmed="ngModel" [(ngModel)]="confirmEmail" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"/>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="form-group">
-        <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid || (confirmEmail != userService.selectedUser.email)">Register</button>
+        <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid || (confirmEmail !== userService.selectedUser.email)">Register</button>
         <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
     </div>
 </form>

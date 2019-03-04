@@ -1,9 +1,4 @@
 export class Environment {
-  urlUser: string;
-  urlProduct: string;
-
-  constructor (urlUser = '', urlProduct = ''){
-  this.urlUser=urlUser;
-  this.urlProduct=urlProduct;
-  }
+  urlUser: string = "http://localhost:3001/api/";
+  urlProduct: string = "http://localhost:3001/api/product";
 }

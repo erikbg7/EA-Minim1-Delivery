@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from "../models/product";
+import { Environment } from "./environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  readonly URL_API = 'http://localhost:3001/api/product';
-
+  environment: Environment;
   selectedProduct: Product;
   products: Product[];
 
@@ -17,18 +17,18 @@ export class ProductService {
   }
 
   getProducts() {
-    return this.http.get(this.URL_API);
+    return this.http.get(this.environment.urlProduct);
   }
 
   postProduct(product: Product) {
-    return this.http.post(this.URL_API, product);
+    return this.http.post(this.environment.urlProduct, product);
   }
 
   putProduct(product: Product) {
-    return this.http.put(this.URL_API + `/${product._id}`, product);
+    return this.http.put(this.environment.urlProduct + `/${product._id}`, product);
   }
 
   deleteProduct(_id: string) {
-    return this.http.delete(this.URL_API + `/${_id}`);
+    return this.http.delete(this.environment.urlProduct + `/${_id}`);
   }
 }
