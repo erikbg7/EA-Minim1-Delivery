@@ -1,5 +1,11 @@
+<h2>Products</h2>
 <p>
-  products works!
+  Here you can see your list of products!
 </p>
+
+<div *ngFor = "let title of fetchData" (click)="goBack()">
+  <img src="https://img.icons8.com/cotton/64/000000/box.png" alt="">
+  <p>  {{title.name}} -- {{title.price}}€ -- {{title.category}} -- {{title.description}}</p>
+</div>
 
 <button (click)="goBack()">Log out</button>

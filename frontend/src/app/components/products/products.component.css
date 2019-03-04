@@ -1,0 +1,17 @@
+div {
+  background: #FAFAFA;
+  padding: 2em;
+  border-radius: 4px;
+  margin-bottom: 7px;
+  display: grid;
+  grid-template-columns: 60px auto;
+}
+
+
+p {
+  margin-left: 20px;
+}
+
+button {
+  margin-top: 10px;
+}
