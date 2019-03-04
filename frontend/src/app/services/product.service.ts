@@ -5,7 +5,7 @@ import { Product } from "../models/product";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class ProductService {
 
   readonly URL_API = 'http://localhost:3001/api/product';
 

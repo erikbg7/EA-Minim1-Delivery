@@ -8,7 +8,7 @@ const api = express.Router()
 
 //RUTAS API (GET, POST, PUT, DELETE)
 api.get('/product', auth, productCtrl.getProducts)
-api.get('/product/:productId', productCtrl.getProduct)
+api.get('/product/:productId', auth, productCtrl.getProduct)
 api.post('/product', auth, productCtrl.saveProduct)
 api.put('/product/:productId', auth, productCtrl.updateProduct)
 api.delete('/product/:productId', auth, productCtrl.deleteProduct)

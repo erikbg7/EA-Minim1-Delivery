@@ -4,14 +4,20 @@
 const express = require('express')
 const BodyParser = require('body-parser')
 const hbs = require('express-handlebars')
+const cors = require('cors')
+const morgan = require('morgan');
 const app = express()
 const api = require('./routes')
+
+app.use(morgan('dev'));
 
 //Método use
 app.use(BodyParser.urlencoded({ extended: false}))
 
 //Permitir peticiones con formato de mensaje JSON
 app.use(BodyParser.json())
+
+app.use(cors({origin: 'http://localhost:4200'}))
 
 //Ficheros hbs
 app.engine('.hbs', hbs({
