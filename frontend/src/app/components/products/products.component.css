@@ -1,3 +1,8 @@
+.logout {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
 div {
   background: #FAFAFA;
   padding: 2em;
@@ -6,7 +11,6 @@ div {
   display: grid;
 }
 
-
 p {
   margin-left: 20px;
 }
@@ -14,3 +18,5 @@ p {
 button {
   margin-top: 10px;
 }
+
+
