@@ -1,0 +1,16 @@
+div {
+  background: #FAFAFA;
+  padding: 2em;
+  border-radius: 40px;
+  margin-bottom: 7px;
+  display: grid;
+}
+
+
+p {
+  margin-left: 20px;
+}
+
+button {
+  margin-top: 10px;
+}

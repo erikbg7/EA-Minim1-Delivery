@@ -9,22 +9,25 @@ import { ProductsComponent } from './components/products/products.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { InterceptorService } from "./services/interceptor.service";
+import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductdetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

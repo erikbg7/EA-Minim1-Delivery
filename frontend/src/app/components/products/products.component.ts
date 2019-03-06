@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from "@angular/common";
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../models/product";
 
@@ -10,7 +9,7 @@ import {Product} from "../../models/product";
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private location: Location, private productService: ProductService) { }
+  constructor(private productService: ProductService) { }
 
   products: Product[];
 
@@ -21,13 +20,11 @@ export class ProductsComponent implements OnInit {
   getProducts(){
     this.productService.getProducts()
       .subscribe(res =>{
-        console.log(res);
         this.products = res["products"];
       });
   }
 
   goBack() {
     localStorage.removeItem('token');
-    this.location.back();
   }
 }

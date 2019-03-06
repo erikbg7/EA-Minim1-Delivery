@@ -21,6 +21,10 @@ export class ProductService {
     return this.http.get(this.environment.urlProduct);
   }
 
+  getSingleProduct(_id: string) {
+    return this.http.get(this.environment.urlProduct + `/${_id}`);
+  }
+
   postProduct(product: Product) {
     return this.http.post(this.environment.urlProduct, product);
   }
@@ -32,8 +36,4 @@ export class ProductService {
   deleteProduct(_id: string) {
     return this.http.delete(this.environment.urlProduct + `/${_id}`);
   }
-
-  /*getToken() {
-    return localStorage.getItem('token');
-  }*/
 }

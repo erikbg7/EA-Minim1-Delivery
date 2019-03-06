@@ -1,9 +1,7 @@
 <h2>Products</h2>
-<p>
-  Here you can see your list of products!
-</p>
-
+<button (click)="goBack()">Log out</button>
 <div *ngFor = "let product of products">
+  <input type="hidden" value="{{product._id}}">
   <div class="border border-secondary">
     <div *ngIf="product.category === 'computers'">
       <img src="https://img.icons8.com/color/96/000000/laptop.png">
@@ -23,7 +21,6 @@
       <p><b>Category:</b> {{product.category}}</p>
       <p><b>Price:</b> {{product.price}}</p>
     </div>
+    <button class="btn btn-primary" [routerLink]="['/api/product', product._id]">See product detail</button>
   </div>
 </div>
-
-<button (click)="goBack()">Log out</button>
