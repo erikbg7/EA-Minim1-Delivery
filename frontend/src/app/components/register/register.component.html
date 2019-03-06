@@ -34,21 +34,22 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="confirmEmail">Confirm E-mail</label>
-    <input type="email" class="form-control" id="confirmEmail"  name="confirmEmail"/>
+    <label>Confirm Password</label>
+    <input type="password" class="form-control" formControlName="confirmPassw"/>
     <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.confirmEmail">
-        <div class="alert alert-danger" *ngIf="registerForm.get('confirmEmail').hasError(validation.type) && (registerForm.get('confirmEmail').dirty || registerForm.get('confirmEmail').touched) ||confirmEmail !== userService.selectedUser.email ">
+      <ng-container *ngFor="let validation of validation_messages.confirmPassw">
+        <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassw').hasError(validation.type) && (registerForm.get('confirmPassw').dirty || registerForm.get('confirmPassw').touched)">
           {{ validation.message }}
         </div>
       </ng-container>
     </div>
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid || (confirmEmail !== userService.selectedUser.email)">Register</button>
+    <button class="btn btn-primary" (click)="register(registerForm)" [disabled]="registerForm.invalid">Register</button>
     <a [routerLink]="['']" style="margin-left: 30px">Cancel</a>
   </div>
 </form>
+
 
 
 

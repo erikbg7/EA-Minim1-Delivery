@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   validation_messages: any;
 
-  confirmEmail: string;
+  confirmPassw: string;
 
   //matcher = new MyErrorStateMatcher();
 
@@ -35,10 +35,11 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.pattern(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)])),
 
-        confirmEmail: new FormControl('', Validators.compose([
-          Validators.required])),
-
         password: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.pattern(/^(?=.*\d).{4,8}$/)])),
+
+        confirmPassw: new FormControl('', Validators.compose([
           Validators.required,
           Validators.pattern(/^(?=.*\d).{4,8}$/)]))
       },
@@ -49,19 +50,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.validation_messages = {
       'displayName': [
-        { type: 'required', message: 'Nombre es requerit'},
-        { type: 'minLength', message: 'Nombre minim de caracters es 4'},
-        { type: 'maxLength', message: 'Nombre maxim de caracters es 25'}
+        { type: 'required', message: 'Name is required'},
+        { type: 'minLength', message: 'Name has to be at least length is 4'},
+        { type: 'maxLength', message: 'Name has a maximmum of 25 characters'}
       ],
       'email': [
         { type: 'required', message: 'Email is required' },
         { type: 'pattern', message: 'Email must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
       ],
-      'confirmEmail': [
-        { type: 'required', message: 'Email is required and both e-mails must match' },
-      ],
       'password': [
         { type: 'required', message: 'Password is required' },
+        { type: 'pattern', message: 'Password must be valid. Must contain at least one number and must be between 4 and 8 characters' }
+      ],
+      'confirmPassw': [
+        { type: 'required', message: 'Password is required and both must match' },
         { type: 'pattern', message: 'Password must be valid. Must contain at least one number and must be between 4 and 8 characters' }
       ]
     }
@@ -69,7 +71,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     console.log(this.registerForm.value);
-    let user = new User(this.registerForm.value.displayName, this.registerForm.value.email, this.registerForm.value.password);
+    let user = new User(this.registerForm.value.displayName, this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.confirmPassw);
     this.userService.signup(user)
       .subscribe(
         res => {
