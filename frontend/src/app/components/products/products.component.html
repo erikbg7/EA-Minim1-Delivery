@@ -22,5 +22,6 @@
       <p><b>Price:</b> {{product.price}}</p>
     </div>
     <button class="btn btn-primary" [routerLink]="['/api/product', product._id]">See product detail</button>
+    <button class="btn btn-danger" (click)="confirmDelete(product._id)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
   </div>
 </div>
