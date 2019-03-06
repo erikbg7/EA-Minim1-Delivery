@@ -10,8 +10,6 @@ import {ProductService} from "../../services/product.service";
 })
 export class ProductdetailComponent implements OnInit {
 
-  id: any;
-
   product: Product;
 
   constructor(private activatedRouter: ActivatedRoute, private productService: ProductService) {
@@ -21,12 +19,12 @@ export class ProductdetailComponent implements OnInit {
   ngOnInit() {
     this.activatedRouter.params.subscribe(params => {
       if (typeof params['id'] !== 'undefined') {
-        this.id = params['id'];
+        this.product._id = params['id'];
       } else {
-        this.id = '';
+        this.product._id = '';
       }
     });
-    this.getSingleProduct(this.id);
+    this.getSingleProduct(this.product._id);
   }
 
   getSingleProduct(id: string) {

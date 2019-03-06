@@ -17,8 +17,7 @@ export class LoginComponent implements OnInit {
 
   validation_messages: any;
 
-  constructor(private userService: AuthService,
-              private router: Router, private formBuilder: FormBuilder) {
+  constructor(private userService: AuthService, private router: Router, private formBuilder: FormBuilder) {
 
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([

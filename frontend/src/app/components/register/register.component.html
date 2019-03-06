@@ -35,10 +35,10 @@
   </div>
   <div class="form-group">
     <label>Confirm Password</label>
-    <input type="password" class="form-control" formControlName="confirmPassw"/>
+    <input type="password" class="form-control" formControlName="confirmPassword"/>
     <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.confirmPassw">
-        <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassw').hasError(validation.type) && (registerForm.get('confirmPassw').dirty || registerForm.get('confirmPassw').touched)">
+      <ng-container *ngFor="let validation of validation_messages.confirmPassword">
+        <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassword').hasError(validation.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
           {{ validation.message }}
         </div>
       </ng-container>
