@@ -72,13 +72,22 @@ ng g directive <name>
 ng g service <name>
 ng g guard <name>
 ```
+Run mongoDB:
+
+```
+mongod
+```
+
+>(2) Keep it running on a separate cmd while you are working on your project in order to see the changes  
 
 Run the project on local server:
 
 ```
 ng serve --open
 ```
->CAUTION!: You have to be on .\frontend folder in order to run this line (2) Keep it running on a separate cmd while you are working on your project in order to see the changes   
+>CAUTION!: You have to be on .\frontend folder in order to run this line 
+
+>(3) Keep it running on a separate cmd while you are working on your project in order to see the changes   
 
 Create a build and change environment:
 
@@ -139,7 +148,7 @@ Sara Padilla
 
 Erik Blanca
 
-Andre Galera
+Andrea Galera
 
 Victor Piñón
 
