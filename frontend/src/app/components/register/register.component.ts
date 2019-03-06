@@ -18,10 +18,6 @@ export class RegisterComponent implements OnInit {
 
   validation_messages: any;
 
-  confirmPassw: string;
-
-  //matcher = new MyErrorStateMatcher();
-
   constructor(private userService: AuthService,
               private router: Router, private formBuilder: FormBuilder) {
 

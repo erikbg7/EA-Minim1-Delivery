@@ -45,7 +45,7 @@ function saveProduct (req, res) {
     })
 }
 
-function updateProduct (id) {
+function updateProduct (req, res) {
     let productId = req.params.productId
     let update = req.body
 
@@ -56,8 +56,10 @@ function updateProduct (id) {
     })
 }
 
-function deleteProduct (id) {
+function deleteProduct (req, res) {
     let productId = req.params.productId
+
+    console.log("Product ID: ", productId);
 
     Product.findById(productId, (err, product) => {
         if (err) res.status(500).send({message: `Error al eliminarlo: ${err}`})
