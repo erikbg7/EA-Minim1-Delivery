@@ -3,9 +3,27 @@
   Here you can see your list of products!
 </p>
 
-<div *ngFor = "let title of fetchData" (click)="goBack()">
-  <img src="https://img.icons8.com/cotton/64/000000/box.png" alt="">
-  <p>  {{title.name}} -- {{title.price}}€ -- {{title.category}} -- {{title.description}}</p>
+<div *ngFor = "let product of products">
+  <div class="border border-secondary">
+    <div *ngIf="product.category === 'computers'">
+      <img src="https://img.icons8.com/color/96/000000/laptop.png">
+      <h2>{{product.name}}</h2>
+      <p><b>Category:</b> {{product.category}}</p>
+      <p><b>Price:</b> {{product.price}}</p>
+    </div>
+    <div *ngIf="product.category === 'phones'">
+      <img src="https://img.icons8.com/dusk/64/000000/cell-phone.png">
+      <h2>{{product.name}}</h2>
+      <p><b>Category:</b> {{product.category}}</p>
+      <p><b>Price:</b> {{product.price}}</p>
+    </div>
+    <div *ngIf="product.category === 'accessories'">
+      <img src="https://img.icons8.com/ios/50/000000/headphones-filled.png">
+      <h2>{{product.name}}</h2>
+      <p><b>Category:</b> {{product.category}}</p>
+      <p><b>Price:</b> {{product.price}}</p>
+    </div>
+  </div>
 </div>
 
 <button (click)="goBack()">Log out</button>

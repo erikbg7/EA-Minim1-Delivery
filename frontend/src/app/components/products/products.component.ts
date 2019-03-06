@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from "@angular/common";
+import {ProductService} from "../../services/product.service";
+import {Product} from "../../models/product";
 
 @Component({
   selector: 'app-products',
@@ -8,17 +10,21 @@ import { Location } from "@angular/common";
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private productService: ProductService) { }
+
+  products: Product[];
 
   ngOnInit() {
+    this.getProducts();
   }
 
-  //Datos dummy que usamos de feed para la vista del producto
-  fetchData = [
-    {"name":"PC MSI","picture":"pic1","price":"1200","category":"Top Seller", "description":"No description"},
-    {"name":"IPhone","picture":"pic2","price":"900","category":"Top Seller", "description":"No description"},
-    {"name":"Laptop Backpack","picture":"pic3","price":"12","category":"Top Seller", "description":"No description"},
-    {"name":"Mouse + Headphones","picture":"pic4","price":"12","category":"Top Seller", "description":"No description"}];
+  getProducts(){
+    this.productService.getProducts()
+      .subscribe(res =>{
+        console.log(res);
+        this.products = res["products"];
+      });
+  }
 
   goBack() {
     localStorage.removeItem('token');

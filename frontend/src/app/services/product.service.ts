@@ -14,6 +14,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {
     this.selectedProduct = new Product();
+    this.environment = new Environment();
   }
 
   getProducts() {
