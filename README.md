@@ -71,6 +71,7 @@ ng g class <name>
 ng g directive <name>
 ng g service <name>
 ng g guard <name>
+ng g page <name>
 ```
 Run mongoDB:
 
