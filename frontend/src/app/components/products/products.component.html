@@ -1,6 +1,6 @@
 <h2>Products</h2>
 <button (click)="goBack()">Log out</button>
-<div *ngFor = "let product of products">
+<div *ngFor = "let product of products; let i=index">
   <input type="hidden" value="{{product._id}}">
   <div class="border border-secondary">
     <div *ngIf="product.category === 'computers'">
@@ -22,6 +22,6 @@
       <p><b>Price:</b> {{product.price}}</p>
     </div>
     <button class="btn btn-primary" [routerLink]="['/api/product', product._id]">See product detail</button>
-    <button class="btn btn-danger" (click)="confirmDelete(product._id)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+    <button class="btn btn-danger" (click)="confirmDelete(product._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
   </div>
 </div>

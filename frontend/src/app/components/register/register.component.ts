@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
       ],
       'email': [
         { type: 'required', message: 'Email is required' },
+        { type: 'unique', message: 'Email must be unique'} ,
         { type: 'pattern', message: 'It must be valid. Must contain a @ and only one dot in the domain. Domain between 2 and 3 characters long' }
       ],
       'password': [
@@ -72,16 +73,9 @@ export class RegisterComponent implements OnInit {
           this.router.navigateByUrl("/api/product");
         },
         err => {
-          console.log(err);
-          this.handleError(err);
+          this.registerForm.get("email").setErrors({unique: true});
         });
   }
 
-  private handleError(err: HttpErrorResponse) {
-    if( err.status == 500 ) {
-      alert(err);
-    } else if ( err.status == 404 ) {
-      alert('The user is wrong');
-    }
-  }
+
 }

@@ -59,8 +59,6 @@ function updateProduct (req, res) {
 function deleteProduct (req, res) {
     let productId = req.params.productId
 
-    console.log("Product ID: ", productId);
-
     Product.findById(productId, (err, product) => {
         if (err) res.status(500).send({message: `Error al eliminarlo: ${err}`})
     

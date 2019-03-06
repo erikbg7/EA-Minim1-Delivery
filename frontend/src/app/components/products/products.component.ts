@@ -30,14 +30,18 @@ export class ProductsComponent implements OnInit {
    *
    * @param id
    */
-  confirmDelete(id: string) {
+  confirmDelete(id: string, i: number) {
     if(confirm('El producto se borrará de tu lista de productos...')){
       this.productService.deleteProduct(id)
         .subscribe(
           res =>{
             console.log(res);
-            alert("Se ha borrado correctamente");
-            this.getProducts();
+            console.log("Se ha borrado correctamente ", i);
+            //this.getProducts();
+            //Two way data binding!
+            this.products.splice(i,1);
+            console.log("Se ha borrado correctamente ", this.products);
+
           },
           err => {
             this.handleError(err);
