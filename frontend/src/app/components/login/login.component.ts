@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, NgForm, Validator, Validators} from "@angular/forms";
-import { UserService } from "../../services/user.service";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "../../services/auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
-import {Router} from "@angular/router";
-import {User} from "../../models/user";
+import { Router } from "@angular/router";
+import { User } from "../../models/user";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService]
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   validation_messages: any;
 
-  constructor(private userService: UserService,
+  constructor(private userService: AuthService,
               private router: Router, private formBuilder: FormBuilder) {
 
     this.loginForm = this.formBuilder.group({

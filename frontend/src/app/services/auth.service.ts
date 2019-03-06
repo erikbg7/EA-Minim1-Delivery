@@ -6,7 +6,7 @@ import { Environment } from "./environment";
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
 
   environment: Environment;
   selectedUser: User;

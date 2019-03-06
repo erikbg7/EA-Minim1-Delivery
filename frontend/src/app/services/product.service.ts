@@ -31,4 +31,8 @@ export class ProductService {
   deleteProduct(_id: string) {
     return this.http.delete(this.environment.urlProduct + `/${_id}`);
   }
+
+  /*getToken() {
+    return localStorage.getItem('token');
+  }*/
 }

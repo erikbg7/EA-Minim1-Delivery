@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../services/user.service";
+import { AuthService } from "../../services/auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Validator} from "validator.ts/Validator";
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [UserService]
+  providers: [AuthService]
 })
 export class RegisterComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
 
   isEmail: boolean;
 
-  constructor(private userService: UserService,
+  constructor(private userService: AuthService,
               private router: Router, private formBuilder: FormBuilder) {
 
     this.form = this.formBuilder.group({

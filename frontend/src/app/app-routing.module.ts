@@ -6,10 +6,10 @@ import { ProductsComponent } from "./components/products/products.component";
 import { MyguardGuard } from "./myguard.guard";
 
 const routes: Routes = [
-  { path: 'signin', component: LoginComponent },
-  { path: 'signup', component: RegisterComponent },
+  { path: 'api/signin', component: LoginComponent },
+  { path: 'api/signup', component: RegisterComponent },
   { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
-  { path: '', redirectTo: '/signin', pathMatch: 'full' }
+  { path: '', redirectTo: '/api/signin', pathMatch: 'full' }
 ];
 
 @NgModule({
