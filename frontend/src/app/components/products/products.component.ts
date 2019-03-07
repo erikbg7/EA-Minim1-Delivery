@@ -61,5 +61,6 @@ export class ProductsComponent implements OnInit {
 
   goBack() {
     localStorage.removeItem('token');
+    this.router.navigateByUrl('');
   }
 }
