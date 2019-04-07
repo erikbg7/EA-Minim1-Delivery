@@ -29,7 +29,10 @@ export class ProductService {
     return this.http.post(this.environment.urlProduct, product);
   }
 
-  putProduct(product: Product) {
+  updateProduct(product: Product) {
+    return this.http.put(this.environment.urlProduct + `/${product._id}`, product);
+  }
+  updateProduct(product: Product) {
     return this.http.put(this.environment.urlProduct + `/${product._id}`, product);
   }
 

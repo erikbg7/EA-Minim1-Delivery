@@ -3,7 +3,7 @@
 //Importar librerías
 const express = require('express')
 const BodyParser = require('body-parser')
-const hbs = require('express-handlebars')
+const    hbs = require('express-handlebars')
 const cors = require('cors')
 const morgan = require('morgan');
 const app = express()

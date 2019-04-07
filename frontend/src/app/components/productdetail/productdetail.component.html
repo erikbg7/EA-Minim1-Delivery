@@ -1,6 +1,6 @@
 <h2>Product Detail of {{product.name}}</h2>
-<button class="logout" (click)="goBack()" [routerLink]="['']">Log out</button>
-<div class="border border-secondary">
+
+<div class="border border-secondary card">
   <span *ngIf="product.category === 'computers'"><img src="https://img.icons8.com/color/96/000000/laptop.png"></span>
   <span *ngIf="product.category === 'phones'"><img src="https://img.icons8.com/dusk/64/000000/cell-phone.png"></span>
   <span *ngIf="product.category === 'accessories'"><img src="https://img.icons8.com/ios/50/000000/headphones-filled.png"></span>
@@ -9,3 +9,36 @@
   <p><b>Price:</b> {{product.price}} €</p>
   <p><b>Description:</b>{{product.description}}</p>
 </div>
+<button type="button" class="btn btn-warning btn-lg btn-block update" (click)="triggerUpdate()">Update</button>
+
+
+
+<div class = "updateContainer" *ngIf="updateProcess === true">
+  <label>Category</label>
+  <select class="browser-default custom-select" [(ngModel)]="selectedCategory">
+    <option value="computers">computers</option>
+    <option value="accessories">accessories</option>
+    <option value="phones">phones</option>
+  </select>
+  <br>
+  <br>
+  <form [formGroup]="updateForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" formControlName="name"/>
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <input type="number" class="form-control" formControlName="price"/>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input type="text" class="form-control" formControlName="description"/>
+    </div>
+
+    <button type="button" class="btn btn-warning btn-lg btn-block confirmation" (click)="updateProduct()">Confirm Update</button>
+
+  </form>
+</div>
+
+

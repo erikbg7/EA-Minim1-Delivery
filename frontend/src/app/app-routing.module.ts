@@ -9,7 +9,7 @@ import {ProductdetailComponent} from "./components/productdetail/productdetail.c
 const routes: Routes = [
   { path: 'api/signin', component: LoginComponent },
   { path: 'api/signup', component: RegisterComponent },
-  { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard] },
+  { path: 'api/product', component: ProductsComponent, canActivate: [MyguardGuard], pathMatch: 'full' },
   { path: 'api/product/:id', component: ProductdetailComponent, canActivate: [MyguardGuard], pathMatch: 'full'},
   { path: '', redirectTo: '/api/signin', pathMatch: 'full' }
 ];

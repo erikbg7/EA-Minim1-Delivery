@@ -18,7 +18,7 @@ function isAuth (req, res, next) {
        next()
    })
    .catch(response => {
-       res.status(response.status)
+       res.status(response.status).send(response.status + ': authentication error --> ' + response.message)
    })
 }
 

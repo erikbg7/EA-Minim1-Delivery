@@ -3,13 +3,31 @@
   margin-top: 0px;
 }
 
-div {
+.update {
+  font-weight: bold;
+  text-align: center;
+}
+.confirmation {
+  padding: 0 0 0 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card {
   background: #FAFAFA;
   padding: 2em;
   border-radius: 40px;
   margin-bottom: 7px;
   display: grid;
 }
+
+.updateContainer {
+  padding: 30px 10px 10px 10px;
+  border-radius: 10px;
+  background-color: beige;
+}
+
+
 
 p {
   margin-left: 20px;
