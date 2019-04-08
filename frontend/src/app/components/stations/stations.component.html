@@ -1,0 +1,14 @@
+<span class="stations-title">
+  <h2>Stations</h2>
+</span>
+
+
+<div *ngFor = "let station of stations; let i=index">
+  <div class="border border-secondary card">
+
+    <h2>{{station.name}}</h2>
+    <p><b>Availability:</b> {{station.state}}</p>
+    <p><b>Description:</b> {{station.description}}</p>
+    <button class="btn btn-primary" [routerLink]="['/api/bike', station._id]" ><i class="fa fa-eye"></i>&nbsp;See bikes in station</button>
+  </div>
+</div>

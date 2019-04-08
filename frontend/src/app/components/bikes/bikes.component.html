@@ -1,0 +1,18 @@
+<span class="bikes-title">
+  <h2>Bikes</h2>
+</span>
+
+
+<div *ngFor = "let bike of bikes; let i=index">
+  <div class="border border-secondary card">
+
+    <h2>{{bike.name}}</h2>
+    <p><b>Kilometers:</b> {{bike.kms}} kms </p>
+    <p><b>Station:</b> {{bike.station}} </p>
+    <p><b>Description:</b> {{bike.description}}</p>
+    <button class="btn btn-danger" (click)="confirmDelete(bike._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
+
+    <button class="btn btn-warning" (click)="confirmDelete(bike._id, i)"> Bind to a Station </button>
+
+  </div>
+</div>

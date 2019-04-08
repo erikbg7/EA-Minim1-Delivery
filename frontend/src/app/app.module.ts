@@ -10,6 +10,11 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { InterceptorService } from "./services/interceptor.service";
 import { ProductdetailComponent } from './components/productdetail/productdetail.component';
+import { HomeComponent } from './components/home/home.component';
+import { UsersComponent } from './components/users/users.component';
+import { StationsComponent } from './components/stations/stations.component';
+import { BikesComponent } from './components/bikes/bikes.component';
+import { StationDetailComponent } from './components/station-detail/station-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { ProductdetailComponent } from './components/productdetail/productdetail
     ProductsComponent,
     LoginComponent,
     RegisterComponent,
-    ProductdetailComponent
+    ProductdetailComponent,
+    HomeComponent,
+    UsersComponent,
+    StationsComponent,
+    BikesComponent,
+    StationDetailComponent
   ],
   imports: [
     BrowserModule,
