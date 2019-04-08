@@ -13,14 +13,17 @@ import {Station} from "../../models/station/station";
 export class BikesComponent implements OnInit {
 
   bikes: Bike[];
+  bindStation: boolean;
+  selectedStation: string;
 
   constructor(private bikesService: BikesService, private router: Router) { }
 
   ngOnInit() {
-    this.getStations();
+    this.getBikes();
+    this.bindStation = false;
   }
 
-  getStations(){
+  getBikes(){
 
     this.bikesService.getBikes()
       .subscribe(res =>{
@@ -45,6 +48,14 @@ export class BikesComponent implements OnInit {
           })
     }
   }
+
+  triggerBind() {
+    this.bindStation = !this.bindStation;
+  }
+
+
+
+
 
 
 }

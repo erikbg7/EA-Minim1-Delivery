@@ -12,7 +12,16 @@
     <p><b>Description:</b> {{bike.description}}</p>
     <button class="btn btn-danger" (click)="confirmDelete(bike._id, i)"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Delete </button>
 
-    <button class="btn btn-warning" (click)="confirmDelete(bike._id, i)"> Bind to a Station </button>
+    <button class="btn btn-warning" (click)="triggerBind()"> Bind to a Station </button>
+    <div class="stations-container" *ngIf="bindStation === true">
+      <select class="browser-default custom-select" [(ngModel)]="selectedStation">
+        <option value="5cab1451cb1298659cedd073">Arc de Triomf</option>
+        <option value="5cab149ccb1298659cedd074">Plaça Catalunya</option>
+        <option value="5cab14a8cb1298659cedd075">Les Corts</option>
+      </select>
+      <button class="btn btn-warning" (click)="triggerBind()"> Confirm Binding </button>
+
+    </div>
 
   </div>
 </div>

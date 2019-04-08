@@ -6,8 +6,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { InterceptorService } from "./services/interceptor.service";
 import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 import { HomeComponent } from './components/home/home.component';
@@ -20,8 +18,6 @@ import { StationDetailComponent } from './components/station-detail/station-deta
   declarations: [
     AppComponent,
     ProductsComponent,
-    LoginComponent,
-    RegisterComponent,
     ProductdetailComponent,
     HomeComponent,
     UsersComponent,
