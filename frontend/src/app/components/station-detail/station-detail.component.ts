@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../../models/product";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProductService} from "../../services/product.service";
 import {BikesService} from "../../services/bikes/bikes.service";
 import {Station} from "../../models/station/station";
 import {Bike} from "../../models/bike/bike";
